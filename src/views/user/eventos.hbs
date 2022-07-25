@@ -1,4 +1,4 @@
-<h3>Evntos disponiveis:</h3>
+<h3>Eventos disponiveis:</h3>
 {{#if eventoData}}
 <table class="table">
     <thead>
@@ -11,10 +11,9 @@
     <tbody>
         <tr>
             <th>{{nome}}</th>
-            <th><a href="#" class="link-primary">Inscrever-se</a></th>
+            <th><a href="/evento/{{_id}}" class="link-primary">Inscrever-se</a></th>
         </tr>
     </tbody>
 {{/each}}
 </table>
 {{/if}}
-    {{!-- <h1>{{nome}}</h1> --}}

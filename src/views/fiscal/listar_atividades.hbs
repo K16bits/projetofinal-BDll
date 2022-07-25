@@ -1,17 +1,16 @@
-<h3>Atividades:</h3>
 {{#if Atividades}}
 <table class="table">
     <thead>
     <tr>
-        <th>Eventos:</th>
-        <th>Inscrições:</th>
+        <th>Atividades</th>
+        <th>Presença</th>
     </tr>
     </thead>
 {{#each Atividades}}
     <tbody>
         <tr>
             <th>{{nome}}</th>
-            <th><a class="link-primary">Inscrever-se</a></th>
+            <th><a href="/fiscal/evento/validar?eventoid={{../EventoID}}&atividadeid={{_id}}" class="link-primary">Acessar</a></th>
         </tr>
     </tbody>
 {{/each}}

@@ -1,0 +1,24 @@
+<h1>ADM</h1>
+{{> navbar}}
+ <a  class="btn btn-primary" href="/adm/criar_evento" role="button">Criar Evento</a>
+<h3>Eventos disponiveis:</h3>
+{{#if eventoData}}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Eventos:</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    </thead>
+{{#each eventoData}}
+    <tbody>
+        <tr>
+            <th>{{nome}}</th>
+             <th>{{status}}</th>
+            <th><a href="/adm/gerenciar_evento/{{_id}}" class="link-primary">Acessar</a></th>
+        </tr>
+    </tbody>
+{{/each}}
+</table>
+{{/if}}

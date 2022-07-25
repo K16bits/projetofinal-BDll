@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const local = "mongodb://localhost:27017/crud-tasks";
+const local = "mongodb://localhost:27017/sistema";
 
 (async () => {
   try {

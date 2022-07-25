@@ -1,0 +1,20 @@
+{{#if eventoData}}
+
+<h1>Evento: {{eventoData.nome}}</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Atividades</th>
+        <th></th>
+    </tr>
+    </thead>
+{{#each eventoData.atividades}}
+    <tbody>
+        <tr>
+            <th>{{nome}}</th>
+            {{!-- <th><a href="/evento/{{_id}}" class="link-primary">Inscrever-se</a></th> --}}
+        </tr>
+    </tbody>
+{{/each}}
+</table>
+{{/if}}

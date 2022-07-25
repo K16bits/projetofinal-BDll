@@ -1,5 +1,4 @@
-<h3>Atividades:</h3>
-{{#if Atividades}}
+<h3>Eventos disponiveis:</h3>
 <table class="table">
     <thead>
     <tr>
@@ -7,13 +6,12 @@
         <th>Inscrições:</th>
     </tr>
     </thead>
-{{#each Atividades}}
+{{#each eventoData}}
     <tbody>
         <tr>
             <th>{{nome}}</th>
-            <th><a class="link-primary">Inscrever-se</a></th>
+            <th><a href="/fiscal/evento/atividades?_id={{_id}}" class="link-primary">Acessar</a></th>
         </tr>
     </tbody>
 {{/each}}
 </table>
-{{/if}}

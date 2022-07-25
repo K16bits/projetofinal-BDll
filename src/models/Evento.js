@@ -5,9 +5,12 @@ const eventoSchema = new Schema(
   {
     nome: String,
     status: Boolean,
+    participantes:[{
+      nome: String,
+    }],
     atividades:[{
         nome:String,
-        inscritos:[{cpf: String
+        inscritos:[{nome: String
         }]
       }]
   },
