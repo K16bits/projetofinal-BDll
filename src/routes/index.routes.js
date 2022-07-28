@@ -7,15 +7,15 @@ const router = Router()
 //--------------------- CRUD  --------------------
 
 router.post('/criar-usuario',async (req,res)=>{
-  const {nome,senha,tipo} = req.body;
-  const user = await Usuario.create({nome,senha,tipo})
-  res.send(user)
+  const {nome,senha,tipo,email} = req.body;
+  const user = await Usuario.create({nome,senha,tipo:"adm",email})
+  res.render('login')
 })
 
 router.post('/login',async (req,res)=>{
-  const {nome,senha} = req.body;
-  // console.log(nome)
-  const user = await Usuario.findOne({nome}).lean()
+  const {email,senha} = req.body;
+  // console.log(email)
+  const user = await Usuario.findOne({email}).lean()
   console.log(user)
   if(!user){
     return res.status(400).json({msg:"Usuario inválido"})
@@ -42,9 +42,10 @@ router.post('/adionar-no-evento/_id', async(req, res) => {
 })
 
 router.post('/criar-atividade', async(req, res) => {
-  const {_id,nome} = req.body
-  const data = await Evento.findByIdAndUpdate(_id,{ $push:{atividades:{nome:nome}} })
-  res.status(200).json({data})
+  const {idEvento,nomeAtividade} = req.body
+  // console.log(idEvento,nomeAtividade)
+  const data = await Evento.findByIdAndUpdate({_id:idEvento},{ $push:{atividades:{nome:nomeAtividade}} })
+  res.redirect(`/adm/gerenciar_evento?_idEvento=${idEvento}`)
 })
 
 router.post('/adicionar-na-atividade', async(req, res) => {

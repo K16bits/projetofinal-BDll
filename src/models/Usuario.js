@@ -5,7 +5,8 @@ const UsuarioSchema = new Schema(
   {
     nome: String,
     tipo: String,
-    senha: String
+    senha: String,
+    email: String
   }
 );
 

@@ -8,6 +8,10 @@ routerPages.get('/', async(req, res) => {
     res.render("login")
 })
 
+routerPages.get('/criarlogin', async(req, res) => {
+    res.render("criarLogin")
+})
+
 routerPages.get('/user', async(req, res) => {
     const eventoData = await Evento.find({}).lean()
     res.render("user/eventos",{eventoData})
@@ -34,11 +38,16 @@ routerPages.get('/adm/criar_evento', async(req, res) => {
     res.render("adm/criar_evento")
 })
 
-routerPages.get('/adm/gerenciar_evento/:_id', async(req, res) => {
-    const {_id} = req.params
-    const eventoData = await Evento.findById(_id).lean()
-    console.log(eventoData)
-    res.render("adm/gerenciar_evento",{eventoData})
+routerPages.get('/adm/gerenciar_evento?:_idEvento', async(req, res) => {
+    const {_idEvento} = req.query
+    const eventoData = await Evento.findById({_id:_idEvento}).lean()
+    res.render("adm/gerenciar_evento",{eventoData,_idEvento})
+})
+
+routerPages.get('/adm/criar-atividade?:_idEvento', async(req, res) => {
+    const {_idEvento} = req.query
+    // console.log(_idEvento)
+    res.render('adm/criar_atividade',{_idEvento})
 })
 
 routerPages.get('/fiscal', async(req, res) => {
@@ -46,8 +55,9 @@ routerPages.get('/fiscal', async(req, res) => {
     res.render("fiscal/gerenciar_evento",{eventoData})
 })
 
-routerPages.get('/fiscal/evento/atividades/', async(req, res) => {
+routerPages.get('/fiscal/evento/atividades?:_id', async(req, res) => {
     const {_id} = req.query
+    // console.log(_id)
     const eventoData = await Evento.findById(_id).lean() // SubDocumento não está com o metodo lean()
     res.render("fiscal/listar_atividades",{Atividades:eventoData.atividades,EventoID:_id})
 })
