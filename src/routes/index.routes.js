@@ -54,4 +54,9 @@ router.post('/adicionar-na-atividade', async(req, res) => {
   res.status(200).json({data})
 })
 
+router.post('/modificar_acesso', async(req, res) => {
+  const {email,tipo} = req.body
+  console.log(req.body)
+})
+
 module.exports = router

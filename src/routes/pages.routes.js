@@ -1,4 +1,5 @@
 const Evento = require('../models/Evento.js')
+const Usuario = require('../models/Usuario.js')
 const { Router } = require('express')
 const routerPages = Router()
 
@@ -26,7 +27,16 @@ routerPages.get('/user/atividades', async(req, res) => {
 
 routerPages.get('/evento/:_id', async(req, res) => {
     const _id = req.params
-    res.render('user/confirmaEvento')
+    res.render('user/confirmaEvento',{id:_id})
+})
+
+
+routerPages.get('/user/confirma?:_id',async(req,res)=>{
+    const {_id} = req.query
+    const data = await Evento.findByIdAndUpdate(_id,{$push:{participantes:{
+        nome:"cris"
+    }}})
+    console.log(data)
 })
 
 routerPages.get('/adm', async(req, res) => {
@@ -49,6 +59,27 @@ routerPages.get('/adm/criar-atividade?:_idEvento', async(req, res) => {
     // console.log(_idEvento)
     res.render('adm/criar_atividade',{_idEvento})
 })
+
+routerPages.get('/adm/gerenciar_fiscal', async(req, res) => {
+    const usuarios = await Usuario.find().lean()
+    // console.log(usuarios)
+    res.render('adm/gerenciar_fiscal',{usuarios})
+})
+
+routerPages.get('/adm/modificar_usuario', async(req, res) => {
+    res.render('adm/modificar_usuario')
+})
+
+routerPages.get('/adm/gerenciar_participantes', async(req, res) => {
+    const usuarios = await Usuario.find().lean()
+    // console.log(usuarios)
+    res.render('adm/gerenciar_participantes',{usuarios})
+})
+
+routerPages.get('/adm/criar_fiscal', async(req, res) => {
+    res.render('adm/criar_fiscal')
+})
+
 
 routerPages.get('/fiscal', async(req, res) => {
     const eventoData = await Evento.find({}).lean()
