@@ -1,22 +1,30 @@
 <form method="post" action="/modificar_acesso">
-    <div class="form-group col-sm-2">
-      <label>E-mail</label>
-      <input name="email" type="email" class="form-control" autocomplete="off">
-    </div>
+  <div class="form-group col-sm-2">
+    <label>E-mail</label>
+    <input name="email" type="email" class="form-control" autocomplete="off">
+  </div>
 
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-  <label class="form-check-label" for="exampleRadios1">
-    Default radio
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-  <label class="form-check-label" for="exampleRadios2">
-    Second default radio
-  </label>
-</div>
+  <span>Tipo de Acesso</span>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="tipo" id="exampleRadios1" value="adm" checked>
+    <label class="form-check-label" for="exampleRadios1">
+      Adm
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="tipo" id="exampleRadios2" value="fiscal">
+    <label class="form-check-label" for="exampleRadios2">
+      Fiscal
+    </label>
+  </div>
 
-    <button type="submit" class="btn btn-primary">Criar evento</button>
-    <a  class="btn btn-secondary" href="/adm/gerenciar_fiscal" role="button">voltar</a>
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="tipo" id="exampleRadios3" value="usuario">
+    <label class="form-check-label" for="exampleRadios3">
+      Usuario
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Modificar acesso</button>
+  <a  class="btn btn-secondary" href="/adm/gerenciar_fiscal" role="button">voltar</a>
 </form>
