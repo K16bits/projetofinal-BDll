@@ -8,6 +8,7 @@ const router = require('./routes/index.routes.js');
 const routerPages = require("./routes/pages.routes.js");
 require('./database.js')
 
+app.use(express.static(path.join(__dirname, 'public'))); //CSS
 // initialize body-parser to parse incoming parameters requests to req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 

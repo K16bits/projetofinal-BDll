@@ -1,13 +1,33 @@
 <form action="/criar-atividade" method="post">
-    <div class="form-group">
-        <label>ID Evento</label>
-        <input name="idEvento" type="text" class="form-control col-sm-4" value={{_idEvento}}>
-    </div>
+    <div class="col-sm-7">
 
-    <div class="form-group">
-        <label>Nome da atividade</label>
-        <input name="nomeAtividade" type="text" class="form-control col-sm-4" autocomplete="off">
+        <div class="form-group">
+            <label>ID Evento</label>
+            <input name="idEvento" type="text" class="form-control col-sm-4" value={{_idEvento}}>
+        </div>
+
+        <div class="form-group">
+            <label>Nome da atividade</label>
+            <input name="nomeAtividade" type="text" class="form-control col-sm-4" autocomplete="off">
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label >Hora inicial</label>
+                <input name="nomeAtividade" type="text" class="form-control" autocomplete="off" placeholder="00:00">
+            </div>
+            <div class="form-group col-sm-2">
+                <label>Hora Final</label>
+                <input name="nomeAtividade" type="text" class="form-control" autocomplete="off" placeholder="00:00">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Palestrantes</label>
+            <textarea class="form-control"name="palestrantes" style="width: 220px;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" autocomplete="off">Submit</button>
     </div>
-    <button type="submit" class="btn btn-primary" autocomplete="off">Submit</button>
     {{!-- <a  class="btn btn-secondary" href="/criarlogin" role="button">Cadastrar</a> --}}
 </form>
