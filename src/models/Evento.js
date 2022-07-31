@@ -10,8 +10,7 @@ const eventoSchema = new Schema(
         email: String,
       },
     ],
-    atividades: [
-      {
+    atividades: [{
         titulo: String,
         horaInicio: String,
         horaFim: String,
@@ -21,8 +20,7 @@ const eventoSchema = new Schema(
         local: String,
         abertoInscricoes: Boolean,
         inscritos: [{ email: String }],
-      },
-    ],
+      }],
   },
   {
     timestamps: true,

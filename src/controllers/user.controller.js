@@ -19,7 +19,7 @@ module.exports = {
         const _id = "62ddacfed8f986f103ac0077"
         const eventoData = await Evento.findById(_id).lean()
         console.log(eventoData)
-        // res.render('user/atividades',{Atividades:eventoData.atividades})
+        res.render('user/atividades',{Atividades:eventoData.atividades})
     },
 
     increverSeEvento(req,res){
