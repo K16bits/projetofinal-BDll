@@ -14,8 +14,11 @@
     <tbody>
         <tr>
             <th>{{nome}}</th>
-             <th>{{status}}</th>
-            <th><a href="/adm/gerenciar_evento?_idEvento={{_id}}" class="link-primary">Acessar</a></th>
+            <th>{{status}}</th>
+            <th>
+                <a class="btn btn-primary" href="/adm/gerenciar_evento?_idEvento={{_id}}">Acessar</a>
+                <a class="btn btn-danger" href="/adm/remover_evento?_idEvento={{_id}}">Deletar</a>
+            </th>
         </tr>
     </tbody>
 {{/each}}

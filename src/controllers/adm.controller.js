@@ -17,6 +17,13 @@ module.exports = {
         res.render("adm/gerenciar_evento",{eventoData,_idEvento}) 
     },
 
+    async removerEventoID(req,res){
+        const {_idEvento} = req.query
+        const eventoData = await Evento.findByIdAndDelete({_id:_idEvento})
+        console.log(eventoData)
+        res.redirect('/adm')
+    },
+
     criarAtividadeID(req,res){
         const {_idEvento} = req.query
         // console.log(_idEvento)

@@ -5,14 +5,24 @@ const eventoSchema = new Schema(
   {
     nome: String,
     status: Boolean,
-    participantes:[{
-      nome: String,
-    }],
-    atividades:[{
-        nome:String,
-        inscritos:[{nome: String
-        }]
-      }]
+    participantes: [
+      {
+        email: String,
+      },
+    ],
+    atividades: [
+      {
+        titulo: String,
+        horaInicio: String,
+        horaFim: String,
+        palestrantes: String,
+        vagas: Number,
+        horasCertificado: Number,
+        local: String,
+        abertoInscricoes: Boolean,
+        inscritos: [{ email: String }],
+      },
+    ],
   },
   {
     timestamps: true,
@@ -20,4 +30,4 @@ const eventoSchema = new Schema(
 );
 
 const Evento = model("Evento", eventoSchema);
-module.exports = Evento
+module.exports = Evento;

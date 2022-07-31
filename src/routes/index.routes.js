@@ -46,9 +46,9 @@ router.post("/criar-usuario", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, senha } = req.body;
-  // console.log(email)
+
   const user = await Usuario.findOne({ email }).lean();
-  console.log(user);
+  console.log(user)
   if (!user) {
     return res.status(400).json({ msg: "Usuario inválido" });
   }
@@ -56,13 +56,12 @@ router.post("/login", async (req, res) => {
   if (senha === user.senha) {
     if (user.tipo === "adm") {
       return res.redirect("/adm");
-    }else if(user.tipo === "fiscal"){
+    } else if (user.tipo === "fiscal") {
       return res.redirect("/fiscal");
     }
     return res.redirect("/user");
-  
   }
-  
+
   return res.status(400).json({ msg: "Usuario e/ou senha inválida" });
 });
 
@@ -81,11 +80,31 @@ router.post("/adionar-no-evento/_id", async (req, res) => {
 });
 
 router.post("/criar-atividade", async (req, res) => {
-  const { idEvento, nomeAtividade } = req.body;
-  // console.log(idEvento,nomeAtividade)
+  const {
+    idEvento,
+    titulo,
+    horaInicio,
+    horaFim,
+    palestrantes,
+    vagas,
+    horasCertificado,
+    local,
+  } = req.body;
+
   const data = await Evento.findByIdAndUpdate(
     { _id: idEvento },
-    { $push: { atividades: { nome: nomeAtividade } } }
+    {$push: {
+        atividades: {
+          titulo,
+          horaInicio,
+          horaFim,
+          palestrantes,
+          vagas,
+          horasCertificado,
+          local,
+        },
+      },
+    }
   );
   res.redirect(`/adm/gerenciar_evento?_idEvento=${idEvento}`);
 });
@@ -100,9 +119,13 @@ router.post("/adicionar-na-atividade", async (req, res) => {
 
 router.post("/modificar_acesso", async (req, res) => {
   const { email, tipo } = req.body;
-  const data = await Usuario.findOneAndUpdate({ email }, { $set: { tipo } },{new: true});
-  console.log(data)
-  res.redirect("/adm/gerenciar_fiscal")
+  const data = await Usuario.findOneAndUpdate(
+    { email },
+    { $set: { tipo } },
+    { new: true }
+  );
+  console.log(data);
+  res.redirect("/adm/gerenciar_fiscal");
 });
 
 module.exports = router;
