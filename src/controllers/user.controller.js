@@ -11,6 +11,7 @@ module.exports = {
 
     async eventosHome(req,res){
         const eventoData = await Evento.find({}).lean()
+        console.log(eventoData)
         res.render("user/eventos",{eventoData})
     },
 
@@ -27,10 +28,10 @@ module.exports = {
     },
 
     async confirmarEvento(req,res){
-        const {_id} = req.query
-        const data = await Evento.findByIdAndUpdate(_id,{$push:{participantes:{
-            nome:"cris"
+        const {email,idEvento} = req.body;
+        const data = await Evento.findByIdAndUpdate({_id:idEvento},{$push:{participantes:{
+            email:email
         }}})
-        console.log(data)
+        res.redirect('/user')
     },
 }

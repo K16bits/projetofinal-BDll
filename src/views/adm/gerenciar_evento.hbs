@@ -6,13 +6,16 @@
     <thead>
     <tr>
         <th>Atividades</th>
-        <th></th>
+        <th>Gerenciar</th>
     </tr>
     </thead>
 {{#each eventoData.atividades}}
     <tbody>
         <tr>
             <th>{{titulo}}</th>
+            <th>
+                <a class="btn btn-danger" href="/adm/remover_atividade/{{../_idEvento}}/{{_id}}">Deletar</a>
+            </th>
         </tr>
     </tbody>
 {{/each}}

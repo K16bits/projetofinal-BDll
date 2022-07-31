@@ -13,7 +13,7 @@ routerPages.get('/criarlogin',userControl.criarLogin)
 routerPages.get('/user',userControl.eventosHome)
 routerPages.get('/user/atividades',userControl.atividades)
 routerPages.get('/evento/:_id',userControl.increverSeEvento)
-routerPages.get('/user/confirma?:_id',userControl.confirmarEvento)
+routerPages.post('/user/confirmar',userControl.confirmarEvento)
 
 
 //ADM
@@ -23,6 +23,9 @@ routerPages.get('/adm/criar_evento',admControl.criarEvento)
 routerPages.get('/adm/gerenciar_evento?:_idEvento',admControl.gerenciarEventoID)
 routerPages.get('/adm/remover_evento?:_idEvento',admControl.removerEventoID)
 routerPages.get('/adm/criar-atividade?:_idEvento',admControl.criarAtividadeID)
+
+routerPages.get('/adm/remover_atividade/:idEvento/:idAtividade',admControl.removerAtividadeID)
+
 routerPages.get('/adm/gerenciar_fiscal',admControl.gerenciarFiscal)
 routerPages.get('/adm/modificar_usuario',admControl.modificarUsuario)
 routerPages.get('/adm/gerenciar_participantes',admControl.gerenciarParticipantes)

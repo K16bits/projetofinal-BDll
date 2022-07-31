@@ -30,6 +30,15 @@ module.exports = {
         res.render('adm/criar_atividade',{_idEvento})
     },
 
+    async removerAtividadeID(req,res){
+        const {idEvento,idAtividade} = req.params;
+        const data = await Evento.findByIdAndUpdate({_id:idEvento},{
+            $pull:{"atividades":{"_id":idAtividade}
+            }
+        })
+        return res.redirect(`/adm/gerenciar_evento?_idEvento=${idEvento}`)
+    },
+
     async gerenciarFiscal(req,res){
         const usuarios = await Usuario.find().lean()
         // console.log(usuarios)
